@@ -34,6 +34,13 @@ class BundleVenvCommand(BundleCommand):
             value_required=True,
         ),
         option(
+            "no-root",
+            "r",
+            "Skip installing the root package into the virtual environment.",
+            flag=True,
+            value_required=False,
+        ),
+        option(
             "clear",
             None,
             "Clear the existing virtual environment if it exists. ",
@@ -48,3 +55,4 @@ class BundleVenvCommand(BundleCommand):
         bundler.set_executable(self.option("python"))
         bundler.set_remove(self.option("clear"))
         bundler.set_activated_groups(self.activated_groups)
+        bundler.set_no_root(self.option("no-root"))
